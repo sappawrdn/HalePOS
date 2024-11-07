@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Store Logo -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Store Name -->
+    <TextView
+        android:id="@+id/storeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hale Coffee"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/space1"
+        app:layout_constraintTop_toBottomOf="@id/storeName"
+        app:layout_constraintBottom_toTopOf="@id/dateTime"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:id="@+id/separator1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="======================================"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/space1"/>
+
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/separator1"/>
+
+
+    <!-- Date and Time -->
+    <TextView
+        android:id="@+id/dateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="26 Sep 24 16:41"
+        app:layout_constraintTop_toBottomOf="@id/separator1"
+        app:layout_constraintStart_toEndOf="@id/dateText"/>
+
+    <TextView
+        android:id="@+id/cashierText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cashier:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dateTime"/>
+
+
+    <!-- Cashier Name -->
+    <TextView
+        android:id="@+id/cashierName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Yusuf"
+        app:layout_constraintTop_toBottomOf="@id/dateTime"
+        app:layout_constraintStart_toEndOf="@id/cashierText" />
+
+    <TextView
+        android:id="@+id/separator2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="======================================"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cashierName"/>
+
+    <!-- Item and Price Details -->
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1 ICED SARABICA"
+        app:layout_constraintTop_toBottomOf="@id/separator2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/itemPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Rp 22,000"
+        app:layout_constraintTop_toBottomOf="@id/separator2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/separator3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="======================================"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemName"/>
+
+    <!-- Total Amount Details -->
+    <TextView
+        android:id="@+id/subtotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Subtotal: Rp 22,000"
+        app:layout_constraintTop_toBottomOf="@id/separator3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Total Tagihan: Rp 22,000"
+        app:layout_constraintTop_toBottomOf="@id/subtotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/separator4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="======================================"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total"/>
+
+    <!-- Cash and Total Paid -->
+    <TextView
+        android:id="@+id/cash"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Tunai: Rp 22,000"
+        app:layout_constraintTop_toBottomOf="@id/separator4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/totalPaid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Total Bayar: Rp 22,000"
+        app:layout_constraintTop_toBottomOf="@id/cash"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/separator5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="======================================"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/totalPaid"/>
+
+    <TextView
+        android:id="@+id/instagramHandle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="IG: @h.co_medan"
+        app:layout_constraintTop_toBottomOf="@id/separator5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/dateTimePaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terbayar: 26 Sep 24 16:41"
+        app:layout_constraintTop_toBottomOf="@id/instagramHandle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

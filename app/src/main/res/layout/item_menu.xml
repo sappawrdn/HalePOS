@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/menu_item_border"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:paddingStart="16dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fore"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/image_border"/>
+
+    <TextView
+        android:id="@+id/textMenuName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        android:layout_marginStart="15dp"/>
+
+    <TextView
+        android:id="@+id/textPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/textMenuName"
+        app:layout_constraintTop_toBottomOf="@id/textMenuName"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Rp 29.000" />
+
+    <com.google.android.material.button.MaterialButton
+        android:visibility="visible"
+        android:id="@+id/btn_add_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Item"
+        android:drawableStart="@drawable/ic_add"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        app:strokeColor="@color/primary"
+        app:strokeWidth="2dp"
+        app:layout_constraintStart_toStartOf="@+id/textPrice"
+        app:layout_constraintBottom_toBottomOf="@id/imageView"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add_item2"
+        android:visibility="gone"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Added"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/primary"
+        app:layout_constraintStart_toStartOf="@+id/btn_add_item"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_add_item"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:background="@drawable/bg_quantity_layout"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:padding="6dp"
+        app:layout_constraintStart_toEndOf="@id/btn_add_item2"
+        app:layout_constraintTop_toTopOf="@id/btn_add_item2"
+        app:layout_constraintBottom_toBottomOf="@id/btn_add_item2"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Button Kurangi Pesanan -->
+        <ImageView
+            android:id="@+id/btn_decrease"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_minus"
+            android:contentDescription="minus"
+            android:background="@drawable/image_border"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- TextView Kuantitas -->
+        <TextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="0"
+            android:textAlignment="center"
+            app:layout_constraintStart_toEndOf="@id/btn_decrease"
+            app:layout_constraintEnd_toStartOf="@id/btn_increase"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Button Tambah Pesanan -->
+        <!-- ImageView untuk Menambah Pesanan -->
+        <ImageView
+            android:id="@+id/btn_increase"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_add"
+            android:contentDescription="add"
+            android:background="@drawable/image_border"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="@drawable/item_background"
+    android:layout_marginBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Image for the item -->
+    <ImageView
+        android:id="@+id/imageViewItem"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Item Name -->
+    <TextView
+        android:id="@+id/textItemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Item Name"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingStart="10dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintTop_toTopOf="@id/imageViewItem"
+        app:layout_constraintStart_toEndOf="@id/imageViewItem"
+        app:layout_constraintEnd_toStartOf="@id/textItemTotalPrice"/>
+
+    <!-- Item Quantity and Price -->
+    <TextView
+        android:id="@+id/textItemQuantityAndPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="($15.0) x2"
+        android:textSize="14sp"
+        android:textColor="#888888"
+        android:paddingStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/textItemName"
+        app:layout_constraintStart_toStartOf="@id/textItemName"
+        app:layout_constraintEnd_toStartOf="@id/textItemTotalPrice" />
+
+    <!-- Total Price per Item -->
+    <TextView
+        android:id="@+id/textItemTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$30.00"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
