@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation ("com.github.DantSu:ESCPOS-ThermalPrinter-Android:3.3.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("com.google.code.gson:gson:2.8.8")
     implementation(libs.androidx.core.ktx)
