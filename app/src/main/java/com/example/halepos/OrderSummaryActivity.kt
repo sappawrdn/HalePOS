@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -206,30 +207,42 @@ class OrderSummaryActivity : AppCompatActivity() {
             val printer = EscPosPrinter(bluetoothConnection, 203, 58f, 32)
             val cashierName = binding.textCashierName.selectedItem.toString()
             val dateTime = SimpleDateFormat("dd MMM yy HH:mm", Locale.getDefault()).format(Date())
-            val itemsText = orderItems.joinToString("\n") { "${it.quantity} ${it.name}  Rp.${it.price * it.quantity}" }
-            val totalAmount = orderItems.sumOf { it.price * it.quantity }
-            val cash = binding.cashNumber.text.toString()
-
-            val printText = "[C]<img>" + PrinterTextParserImg.bitmapToHexadecimalString(printer, this.getApplicationContext().getResources().getDrawableForDensity(R.drawable.logo, DisplayMetrics.DENSITY_MEDIUM))+"</img>\n" +
-                    "[L]\n" +
-                    "[C]<u><font size='big'>Hale Coffee</font></u>\n" +
-                    "[C]================================\n"
-                    "[L]Date/Time: $dateTime\n" +
-                    "[L]Cashier: $cashierName\n" +
-                    "[L]-----------------------------\n" +
-                    "[L]<b>Items</b>\n" +
-                    itemsText + "\n" +
-                    "[L]-----------------------------\n" +
-                    "[L]Subtotal: Rp.${totalAmount}\n" +
-                    "[L]Cash: Rp.${cash}\n" +
-                    "[L]-----------------------------\n" +
-                    "[L]<b>Total: Rp.${totalAmount}</b>\n" +
-                    "[C]================================\n" +
-                    "[C]IG : @h.co_medan\n" +
-                    "[C]Thank you for your purchase!\n"
-
+            val itemsText = orderItems.joinToString() {
+                val quantity = it.quantity.toString()
+                val itemName = it.name.take(15).padEnd(15, ' ') // Nama item maksimum 15 karakter
+                val itemTotal = "Rp.${"%,.0f".format((it.price * it.quantity).toDouble())}".padStart(10, ' ') // Harga rata kanan
+                "$quantity x $itemName $itemTotal"
+            }
+            val totalAmount = orderItems.sumOf { (it.price * it.quantity).toDouble() }
+            val cashString = binding.cashNumber.text.toString()
+            val cash = cashString.toDoubleOrNull() ?: 0.0
+            val change = cash - totalAmount
+            val printText = """
+                            [C]<u><font size='big'>Hale Coffee</font></u>
+                            [C]
+                            [C]PISD Fasilkom-TI USU
+                            [C]Sumatera Utara
+                            [C]Medan
+                            [C]============================
+                            [L]Date/Time: $dateTime
+                            [L]Cashier: $cashierName
+                            [L]----------------------------
+                            [C]Items
+                            [L]----------------------------
+                            $itemsText
+                            [L]----------------------------
+                            [L]Subtotal: Rp.${"%,.0f".format(totalAmount)}</b>
+                            [L]Cash: Rp.${"%,.0f".format(cash)}</b>
+                            [L]----------------------------
+                            [L]<b>Total: Rp.${"%,.0f".format(totalAmount)}</b>
+                            [L]<b>Change Due: Rp.${"%,.0f".format(change)}</b>
+                            [C]============================
+                            [C]IG : @h.co_medan
+                            [C]Yang Nikmat Harus Sehat!!
+                            """.trimIndent()
             printer.printFormattedText(printText)
             Toast.makeText(this, "Bill printed successfully", Toast.LENGTH_SHORT).show()
+            Log.d("Debug", itemsText)
 
         } catch (e: Exception) {
             e.printStackTrace()
